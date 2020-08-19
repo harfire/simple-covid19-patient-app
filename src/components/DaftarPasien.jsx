@@ -197,12 +197,12 @@ export default function DaftarPasien(props) {
             <div className='tabs is-centered is-boxed'>
               <ul>
                 <li onClick={() => setTabIndex(0)} className={tabIndex === 0 ? 'is-active' : ''}>
-                  <a>
+                  <a href='!#'>
                     <span>Input Data</span>
                   </a>
                 </li>
                 <li onClick={() => setTabIndex(1)} className={tabIndex === 1 ? 'is-active' : ''}>
-                  <a>
+                  <a href='!#'>
                     <span>Statistik</span>
                   </a>
                 </li>
