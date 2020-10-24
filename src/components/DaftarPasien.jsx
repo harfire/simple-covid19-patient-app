@@ -11,7 +11,7 @@ export default function DaftarPasien(props) {
     nama: '',
     umur: '',
     kota: '',
-    status: '',
+    status: ''
   };
 
   const [form, setForm] = useState(defaultData);
@@ -20,7 +20,7 @@ export default function DaftarPasien(props) {
   const [isButtonActive, setButtonActive] = useState(false);
   const [sortMethod, setSortMethod] = useState({
     nama: '',
-    umur: '',
+    umur: ''
   });
   const [loading, setloading] = useState(true);
   const [optionKota, setOptionKota] = useState([]);
@@ -42,7 +42,7 @@ export default function DaftarPasien(props) {
   async function getAPI(url) {
     const config = {
       url: url,
-      method: 'GET',
+      method: 'GET'
     };
 
     const result = await axios(config)
@@ -93,7 +93,7 @@ export default function DaftarPasien(props) {
 
     setForm({
       ...form,
-      [param]: value,
+      [param]: value
     });
   };
 
@@ -117,7 +117,7 @@ export default function DaftarPasien(props) {
 
     setForm({
       ...form,
-      nama: text,
+      nama: text
     });
   };
 
@@ -135,18 +135,18 @@ export default function DaftarPasien(props) {
         if (param === 'nama') {
           obj = {
             nama: 'desc',
-            umur: '',
+            umur: ''
           };
         } else {
           obj = {
             umur: 'desc',
-            nama: '',
+            nama: ''
           };
         }
 
         setSortMethod({
           ...sortMethod,
-          ...obj,
+          ...obj
         });
 
         if (firstEl[param] < secondEl[param]) {
@@ -157,7 +157,7 @@ export default function DaftarPasien(props) {
       } else {
         setSortMethod({
           ...sortMethod,
-          [param]: 'asc',
+          [param]: 'asc'
         });
 
         if (secondEl[param] < firstEl[param]) {
@@ -191,18 +191,18 @@ export default function DaftarPasien(props) {
 
   return (
     <>
-      <div className='container'>
-        <div className='columns is-multiline'>
-          <div className='column is-full'>
-            <div className='tabs is-centered is-boxed'>
+      <div className="container">
+        <div className="columns is-multiline">
+          <div className="column is-full">
+            <div className="tabs is-centered is-boxed">
               <ul>
                 <li onClick={() => setTabIndex(0)} className={tabIndex === 0 ? 'is-active' : ''}>
-                  <a href='!#'>
+                  <a href="!#">
                     <span>Input Data</span>
                   </a>
                 </li>
                 <li onClick={() => setTabIndex(1)} className={tabIndex === 1 ? 'is-active' : ''}>
-                  <a href='!#'>
+                  <a href="!#">
                     <span>Statistik</span>
                   </a>
                 </li>
@@ -211,29 +211,44 @@ export default function DaftarPasien(props) {
           </div>
 
           {tabIndex === 0 && (
-            <div className='column is-full'>
-              <div className='box form'>
-                <div className='columns is-multiline'>
-                  <div className='column is-one-fifth'>
-                    <div className='field'>
-                      <div className='control'>
-                        <input value={form.nama} onChange={(e) => setFormData(e, 'nama')} onBlur={(e) => ubahNama(e)} className='input is-primary' type='text' placeholder='Nama Pasien' id='nama' />
+            <div className="column is-full">
+              <div className="box form">
+                <div className="columns is-multiline">
+                  <div className="column is-one-fifth">
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          value={form.nama}
+                          onChange={(e) => setFormData(e, 'nama')}
+                          onBlur={(e) => ubahNama(e)}
+                          className="input is-primary"
+                          type="text"
+                          placeholder="Nama Pasien"
+                          id="nama"
+                        />
                       </div>
                     </div>
                   </div>
-                  <div className='column is-one-fifth'>
-                    <div className='field'>
-                      <div className='control'>
-                        <input value={form.umur} onChange={(e) => setFormData(e, 'umur')} className={isValidUmur ? 'input is-primary' : 'input is-danger'} type='text' placeholder='Umur' id='umur' />
+                  <div className="column is-one-fifth">
+                    <div className="field">
+                      <div className="control">
+                        <input
+                          value={form.umur}
+                          onChange={(e) => setFormData(e, 'umur')}
+                          className={isValidUmur ? 'input is-primary' : 'input is-danger'}
+                          type="text"
+                          placeholder="Umur"
+                          id="umur"
+                        />
                       </div>
                     </div>
                   </div>
-                  <div className='column is-one-fifth is-medium'>
-                    <div className='field'>
-                      <div className='control'>
+                  <div className="column is-one-fifth is-medium">
+                    <div className="field">
+                      <div className="control">
                         <div className={loading ? 'select is-fullwidth is-loading' : 'select is-primary is-fullwidth'}>
-                          <select id='status' onChange={(e) => setFormData(e, 'kota')} defaultValue={'default'}>
-                            <option value='default' disabled>
+                          <select id="status" onChange={(e) => setFormData(e, 'kota')} defaultValue={'default'}>
+                            <option value="default" disabled>
                               Kota
                             </option>
                             {optionKota.map((value, index) => (
@@ -246,12 +261,12 @@ export default function DaftarPasien(props) {
                       </div>
                     </div>
                   </div>
-                  <div className='column is-one-fifth is-medium'>
-                    <div className='field'>
-                      <div className='control'>
+                  <div className="column is-one-fifth is-medium">
+                    <div className="field">
+                      <div className="control">
                         <div className={loading ? 'select is-fullwidth is-loading' : 'select is-primary is-fullwidth'}>
-                          <select id='status' onChange={(e) => setFormData(e, 'status')} defaultValue={'default'}>
-                            <option value='default' disabled>
+                          <select id="status" onChange={(e) => setFormData(e, 'status')} defaultValue={'default'}>
+                            <option value="default" disabled>
                               Status
                             </option>
                             {optionStatus.map((value, index) => (
@@ -264,10 +279,16 @@ export default function DaftarPasien(props) {
                       </div>
                     </div>
                   </div>
-                  <div className='column is-one-fifth'>
-                    <div className='field'>
-                      <div className='control'>
-                        <button onClick={pushData} disabled={isButtonActive || !isValidUmur} className={isButtonActive || !isValidUmur ? 'button is-fullwidth' : 'button is-primary is-fullwidth'}>
+                  <div className="column is-one-fifth">
+                    <div className="field">
+                      <div className="control">
+                        <button
+                          onClick={pushData}
+                          disabled={isButtonActive || !isValidUmur}
+                          className={
+                            isButtonActive || !isValidUmur ? 'button is-fullwidth' : 'button is-primary is-fullwidth'
+                          }
+                        >
                           Tambah Pasien
                         </button>
                       </div>
@@ -275,94 +296,104 @@ export default function DaftarPasien(props) {
                   </div>
                 </div>
               </div>
-              <div className='box'>
-                <nav className='level is-gapless'>
-                  <div className='level-item has-text-centered'>
+              <div className="box">
+                <nav className="level is-gapless">
+                  <div className="level-item has-text-centered">
                     <div>
-                      <p className='heading has-text-black'>Total Data</p>
-                      <p className='title has-text-black'>{loading ? '...' : dataPasien.length}</p>
+                      <p className="heading has-text-black">Total Data</p>
+                      <p className="title has-text-black">{loading ? '...' : dataPasien.length}</p>
                     </div>
                   </div>
-                  <div className='level-item has-text-centered'>
+                  <div className="level-item has-text-centered">
                     <div>
-                      <p className='heading has-text-danger'>Positif</p>
-                      <p className='title has-text-danger'>{loading ? '...' : jumlahStatus(dataPasien, 'Positif')}</p>
+                      <p className="heading has-text-danger">Positif</p>
+                      <p className="title has-text-danger">{loading ? '...' : jumlahStatus(dataPasien, 'Positif')}</p>
                     </div>
                   </div>
-                  <div className='level-item has-text-centered'>
+                  <div className="level-item has-text-centered">
                     <div>
-                      <p className='heading has-text-success'>Negatif</p>
-                      <p className='title has-text-success'>{loading ? '...' : jumlahStatus(dataPasien, 'Negatif')}</p>
+                      <p className="heading has-text-success">Negatif</p>
+                      <p className="title has-text-success">{loading ? '...' : jumlahStatus(dataPasien, 'Negatif')}</p>
                     </div>
                   </div>
-                  <div className='level-item has-text-centered'>
+                  <div className="level-item has-text-centered">
                     <div>
-                      <p className='heading has-text-grey'>Belum Diketahui</p>
-                      <p className='title has-text-grey'>{loading ? '...' : jumlahStatus(dataPasien, 'Belum Diketahui')}</p>
+                      <p className="heading has-text-grey">Belum Diketahui</p>
+                      <p className="title has-text-grey">
+                        {loading ? '...' : jumlahStatus(dataPasien, 'Belum Diketahui')}
+                      </p>
                     </div>
                   </div>
                 </nav>
 
-                <div className='columns is-gapless is-multiline stat'>
-                  <div className='column is-3 has-text-centered'>
-                    <span className='has-text-grey'>Umur 1 - 20: {loading ? '...' : countRangeAge(dataPasien, 1, 20)}</span>
+                <div className="columns is-gapless is-multiline stat">
+                  <div className="column is-3 has-text-centered">
+                    <span className="has-text-grey">
+                      Umur 1 - 20: {loading ? '...' : countRangeAge(dataPasien, 1, 20)}
+                    </span>
                   </div>
-                  <div className='column is-3 has-text-centered'>
-                    <span className='has-text-grey'>Umur 21 - 40: {loading ? '...' : countRangeAge(dataPasien, 21, 40)}</span>
+                  <div className="column is-3 has-text-centered">
+                    <span className="has-text-grey">
+                      Umur 21 - 40: {loading ? '...' : countRangeAge(dataPasien, 21, 40)}
+                    </span>
                   </div>
-                  <div className='column is-3 has-text-centered'>
-                    <span className='has-text-grey'>Umur 41 - 70: {loading ? '...' : countRangeAge(dataPasien, 41, 70)}</span>
+                  <div className="column is-3 has-text-centered">
+                    <span className="has-text-grey">
+                      Umur 41 - 70: {loading ? '...' : countRangeAge(dataPasien, 41, 70)}
+                    </span>
                   </div>
-                  <div className='column is-3 has-text-centered'>
-                    <span className='has-text-grey'>Umur 70 - 100: {loading ? '...' : countRangeAge(dataPasien, 70)}</span>
+                  <div className="column is-3 has-text-centered">
+                    <span className="has-text-grey">
+                      Umur 70 - 100: {loading ? '...' : countRangeAge(dataPasien, 70)}
+                    </span>
                   </div>
                 </div>
 
-                <table className='table is-fullwidth is-hoverable'>
+                <table className="table is-fullwidth is-hoverable">
                   <thead>
                     <tr>
-                      <th width='8%'>#</th>
-                      <th width='25%'>
-                        <span className='has-text-primary is-clickable' onClick={() => sortingData('nama')}>
+                      <th width="8%">#</th>
+                      <th width="25%">
+                        <span className="has-text-primary is-clickable" onClick={() => sortingData('nama')}>
                           Pasien
                           {sortMethod.nama === 'asc' && (
-                            <span className='icon has-text-primary'>
-                              <i className=' fas fa-sort-down'></i>
+                            <span className="icon has-text-primary">
+                              <i className=" fas fa-sort-down"></i>
                             </span>
                           )}
                           {sortMethod.nama === 'desc' && (
-                            <span className='icon has-text-primary'>
-                              <i className=' fas fa-sort-up'></i>
+                            <span className="icon has-text-primary">
+                              <i className=" fas fa-sort-up"></i>
                             </span>
                           )}
                         </span>
                       </th>
-                      <th width='15%'>
-                        <span className='has-text-primary is-clickable' onClick={() => sortingData('umur')}>
+                      <th width="15%">
+                        <span className="has-text-primary is-clickable" onClick={() => sortingData('umur')}>
                           Umur
                           {sortMethod.umur === 'asc' && (
-                            <span className='icon has-text-primary'>
-                              <i className=' fas fa-sort-down'></i>
+                            <span className="icon has-text-primary">
+                              <i className=" fas fa-sort-down"></i>
                             </span>
                           )}
                           {sortMethod.umur === 'desc' && (
-                            <span className='icon has-text-primary'>
-                              <i className=' fas fa-sort-up'></i>
+                            <span className="icon has-text-primary">
+                              <i className=" fas fa-sort-up"></i>
                             </span>
                           )}
                         </span>
                       </th>
-                      <th width='22%'>Kota</th>
-                      <th width='20%'>Status</th>
-                      <th width='10%'></th>
+                      <th width="22%">Kota</th>
+                      <th width="20%">Status</th>
+                      <th width="10%"></th>
                     </tr>
                   </thead>
                   <tbody>
                     {loading ? (
                       <tr>
-                        <td colSpan='6' className='has-text-centered'>
-                          <span className='icon has-text-grey'>
-                            <i className='fas fa-spinner fa-pulse'></i>
+                        <td colSpan="6" className="has-text-centered">
+                          <span className="icon has-text-grey">
+                            <i className="fas fa-spinner fa-pulse"></i>
                           </span>
                         </td>
                       </tr>
@@ -375,7 +406,7 @@ export default function DaftarPasien(props) {
                           <td>{value.kota}</td>
                           <td className={changeColor(value.status)}>{value.status}</td>
                           <td>
-                            <span className='delete is-medium' onClick={() => deleteData(index)}></span>
+                            <span className="delete is-medium" onClick={() => deleteData(index)}></span>
                           </td>
                         </tr>
                       ))
@@ -383,7 +414,7 @@ export default function DaftarPasien(props) {
 
                     {!loading && !dataPasien.length && (
                       <tr>
-                        <td colSpan='6' className='has-text-centered'>
+                        <td colSpan="6" className="has-text-centered">
                           Tidak Ada Data!
                         </td>
                       </tr>
@@ -395,16 +426,18 @@ export default function DaftarPasien(props) {
           )}
 
           {tabIndex === 1 && (
-            <div className='column is-full'>
-              <div className='box'>
-                <div className='box form'>
-                  <div className='columns is-multiline'>
-                    <div className='column is-3'>
-                      <div className='field'>
-                        <div className='control'>
-                          <div className={loading ? 'select is-fullwidth is-loading' : 'select is-primary is-fullwidth'}>
-                            <select id='status' onChange={(e) => selectContinent(e)} defaultValue={'default'}>
-                              <option value='default' disabled>
+            <div className="column is-full">
+              <div className="box">
+                <div className="box form">
+                  <div className="columns is-multiline">
+                    <div className="column is-3">
+                      <div className="field">
+                        <div className="control">
+                          <div
+                            className={loading ? 'select is-fullwidth is-loading' : 'select is-primary is-fullwidth'}
+                          >
+                            <select id="status" onChange={(e) => selectContinent(e)} defaultValue={'default'}>
+                              <option value="default" disabled>
                                 Region
                               </option>
                               {continents.map((value, index) => (
@@ -417,12 +450,14 @@ export default function DaftarPasien(props) {
                         </div>
                       </div>
                     </div>
-                    <div className='column is-3'>
-                      <div className='field'>
-                        <div className='control'>
-                          <div className={loading ? 'select is-fullwidth is-loading' : 'select is-primary is-fullwidth'}>
-                            <select id='status' onChange={(e) => selectCountry(e)} defaultValue={'default'}>
-                              <option value='default' disabled>
+                    <div className="column is-3">
+                      <div className="field">
+                        <div className="control">
+                          <div
+                            className={loading ? 'select is-fullwidth is-loading' : 'select is-primary is-fullwidth'}
+                          >
+                            <select id="status" onChange={(e) => selectCountry(e)} defaultValue={'default'}>
+                              <option value="default" disabled>
                                 Negara
                               </option>
                               {country.map((value, index) => (
@@ -439,52 +474,52 @@ export default function DaftarPasien(props) {
                 </div>
 
                 {loading ? (
-                  <div className='columns is-multiline'>
-                    <div className='column is-full has-text-centered'>
-                      <span className='icon has-text-grey'>
-                        <i className='fas fa-spinner fa-pulse'></i>
+                  <div className="columns is-multiline">
+                    <div className="column is-full has-text-centered">
+                      <span className="icon has-text-grey">
+                        <i className="fas fa-spinner fa-pulse"></i>
                       </span>
                     </div>
                   </div>
                 ) : (
                   selectedItem && (
-                    <div className='columns is-multiline'>
-                      <div className='column is-full'>
-                        <nav className='level is-gapless'>
-                          <div className='level-item has-text-centered'>
+                    <div className="columns is-multiline">
+                      <div className="column is-full">
+                        <nav className="level is-gapless">
+                          <div className="level-item has-text-centered">
                             <div>
-                              <p className='heading has-text-grey'>Jumlah Kasus</p>
-                              <p className='title has-text-grey'>{numberWithDot(selectedItem.cases)}</p>
+                              <p className="heading has-text-grey">Jumlah Kasus</p>
+                              <p className="title has-text-grey">{numberWithDot(selectedItem.cases)}</p>
                             </div>
                           </div>
-                          <div className='level-item has-text-centered'>
+                          <div className="level-item has-text-centered">
                             <div>
-                              <p className='heading has-text-danger'>Positif</p>
-                              <p className='title has-text-danger'>{numberWithDot(selectedItem.active)}</p>
+                              <p className="heading has-text-danger">Positif</p>
+                              <p className="title has-text-danger">{numberWithDot(selectedItem.active)}</p>
                             </div>
                           </div>
-                          <div className='level-item has-text-centered'>
+                          <div className="level-item has-text-centered">
                             <div>
-                              <p className='heading has-text-warning'>Meninggal</p>
-                              <p className='title has-text-warning'>{numberWithDot(selectedItem.deaths)}</p>
+                              <p className="heading has-text-warning">Meninggal</p>
+                              <p className="title has-text-warning">{numberWithDot(selectedItem.deaths)}</p>
                             </div>
                           </div>
-                          <div className='level-item has-text-centered'>
+                          <div className="level-item has-text-centered">
                             <div>
-                              <p className='heading has-text-success'>Sembuh</p>
-                              <p className='title has-text-success'>{numberWithDot(selectedItem.deaths)}</p>
+                              <p className="heading has-text-success">Sembuh</p>
+                              <p className="title has-text-success">{numberWithDot(selectedItem.deaths)}</p>
                             </div>
                           </div>
-                          <div className='level-item has-text-centered'>
+                          <div className="level-item has-text-centered">
                             <div>
-                              <p className='heading has-text-grey'>Kasus Hari Ini</p>
-                              <p className='title has-text-grey'>{numberWithDot(selectedItem.todayCases)}</p>
+                              <p className="heading has-text-grey">Kasus Hari Ini</p>
+                              <p className="title has-text-grey">{numberWithDot(selectedItem.todayCases)}</p>
                             </div>
                           </div>
-                          <div className='level-item has-text-centered'>
+                          <div className="level-item has-text-centered">
                             <div>
-                              <p className='heading has-text-grey'>Meninggal Hari Ini</p>
-                              <p className='title has-text-grey'>{numberWithDot(selectedItem.todayDeaths)}</p>
+                              <p className="heading has-text-grey">Meninggal Hari Ini</p>
+                              <p className="title has-text-grey">{numberWithDot(selectedItem.todayDeaths)}</p>
                             </div>
                           </div>
                         </nav>

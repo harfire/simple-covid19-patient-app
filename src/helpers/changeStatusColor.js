@@ -1,9 +1,10 @@
-export default function changeStatusColor(value) {
-  if (value === 'Positif') {
-    return 'has-text-danger';
-  } else if (value === 'Negatif') {
-    return 'has-text-success';
-  } else {
-    return 'has-text-grey';
-  }
+export default function changeStatusColor(value = 'Belum Diketahui') {
+  const convert = value.toLocaleLowerCase().split(' ').join('_');
+  const status = {
+    positif: 'has-text-danger',
+    negatif: 'has-text-success',
+    belum_diketahui: 'has-text-grey'
+  };
+
+  return status[convert];
 }
